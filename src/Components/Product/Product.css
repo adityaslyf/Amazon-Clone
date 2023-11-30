@@ -1,0 +1,6 @@
+
+.product{
+    @apply
+    bg-white
+    flex-col
+}

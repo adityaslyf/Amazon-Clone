@@ -1,5 +1,6 @@
 import "./Header.css";
 import AmazonLogo from '../../assets/pngimg.com - amazon_PNG28.png'
+import SearchIcon from '@mui/icons-material/Search';
 const Header = () => {
   return (
     <div className="header">
@@ -9,7 +10,14 @@ const Header = () => {
         alt=""
       />
       <div className="header_search">
-        <form action="" id="uniqueFormid"></form>
+        <form action="" id="uniqueFormid">
+          <input
+            type="text"
+            className="header_searchInput"
+           
+          />
+          <SearchIcon className="header_searchIcon" />
+        </form>
 
         {/* Logo */}
         <div className="nav">
