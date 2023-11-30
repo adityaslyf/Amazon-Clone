@@ -1,0 +1,31 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.header {
+    @apply flex bg-[#131921]
+    text-white
+    justify-between
+    h-16
+    sticky
+    top-0
+    z-[100]
+    
+}
+.header-logo{
+    @apply
+   mx-6
+   
+
+} 
+
+.header_search {
+    @apply 
+    flex-row
+}
+
+.nav{
+    @apply
+    flex
+    items-center
+}
