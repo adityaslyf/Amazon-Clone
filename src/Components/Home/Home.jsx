@@ -15,11 +15,14 @@ const Home = () => {
         <Product />
       </div>
       <div className="home__Card">
-        {/*  */}
-        {/*  */}
-        {/*  */}
+        <Product /> 
+         <Product />
+        <Product />
       </div>
-      <div className="home__Card">{/*  */}</div>
+      <div className="home__Card">
+       
+        {/* <Product /> */}
+      </div>
     </div>
   );
 };
