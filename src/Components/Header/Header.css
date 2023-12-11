@@ -151,6 +151,12 @@
   }
 .header__basket{
     color: #f08804;
-    
 
+
+}
+.header__basketCount{
+    color: #f08804;
+    font-weight: 700;
+    margin-left: 10px;
+    margin-right: 10px;
 }

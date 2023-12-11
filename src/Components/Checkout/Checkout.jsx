@@ -1,3 +1,4 @@
+import Subtotal from "./Subtotal/Subtotal";
 import "./checkout.css";
 const Checkout = () => {
   return (
@@ -11,6 +12,7 @@ const Checkout = () => {
       </div>
       <div className="checkout__right">
         <h2>The subtotal will appear here</h2>
+        <Subtotal />
       </div>
     </div>
   );

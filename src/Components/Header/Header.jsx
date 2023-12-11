@@ -1,37 +1,4 @@
-// import "./Header.css";
-// import AmazonLogo from "../../assets/pngimg.com - amazon_PNG28.png";
-// import SearchIcon from "@mui/icons-material/Search";
-// const Header = () => {
-//   return (
-//     <div className="header">
-//       <img className="header-logo" src={AmazonLogo} alt="" />
-//       <div className="header_search">
-//         <form action="" id="uniqueFormid">
-//           <input type="text" className="header_searchInput" />
-//           <SearchIcon className="header_searchIcon" />
-//         </form>
 
-//         {/* Logo */}
-//         <div className="nav">
-//           <div className="header_option">
-//             <span className="header__option1">Hello guest</span>
-//           </div>
-//           <div className="header_option">
-//             <span className="header__option2">Returns</span>
-//           </div>
-//           <div className="header_option">
-//             <span className="header__option3">& Orders</span>
-//           </div>
-//           <div className="header_option">
-//             <span className="header__option4">Your</span>
-//           </div>
-//           <div className="header_option"></div>
-//         </div>
-//       </div>
-//     </div>
-//   );
-// };
-// export default Header;
 
 import "./Header.css";
 import SearchIcon from "@mui/icons-material/Search";
@@ -39,8 +6,11 @@ import ShoppingBasketIcon from "@mui/icons-material/ShoppingBasket";
 
 import AmazonLogo from "../../assets/pngimg.com - amazon_PNG28.png";
 import { Link } from "react-router-dom";
+import { useStateValue } from "../../StateProvider";
+
 
 function Header() {
+  const [{basket} , dispatch] = useStateValue();
   return (
     <div className="header">
       <Link to="/">
@@ -70,6 +40,7 @@ function Header() {
         <Link to="/checkout">
         <div className="checkout__logo">
           <ShoppingBasketIcon className="header__basket" />
+          <span className="header__optionLineTwo header__basketCount">{basket?.length}</span>
         </div>
         </Link>
       </div>
