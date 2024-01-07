@@ -4,8 +4,7 @@ import CheckoutProduct from "./CheckoutProduct/CheckoutProduct";
 import { useStateValue } from "../../StateProvider";
 
 const Checkout = () => {
-  const [{  basket}, dispatch] =useStateValue();
-
+  const [{ basket }, dispatch] = useStateValue();
 
   return (
     <div className="checkout">
@@ -13,20 +12,17 @@ const Checkout = () => {
         <img src="" alt="" />
         <div>
           <h2 className="checkout__title">Your Shopping Basket</h2>
-          {basket.map(item=>(
+          {basket.map((item, index) => (
             <CheckoutProduct
-            key={item.id}
-            id={item.id}
-            title={item.title}
-            image={item.image}
-            price={item.price}
-            rating={item.rating}
+              key={item.id + index} //here we add index to the item.id to make it unique id as i am facing the issue of not able to remove items with similar id in the checkout section
+              id={item.id}
+              title={item.title}
+              image={item.image}
+              price={item.price}
+              rating={item.rating}
             />
           ))}
-
         </div>
-       
-      
       </div>
       <div className="checkout__right">
         <h2>The subtotal will appear here</h2>
