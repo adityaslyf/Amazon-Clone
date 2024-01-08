@@ -22,7 +22,6 @@ const Login = () => {
       alert(error.message);
     }
   };
-
   return (
     <div className="login">
       <Link to="/">
