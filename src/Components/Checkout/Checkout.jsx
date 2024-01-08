@@ -3,7 +3,7 @@ import "./checkout.css";
 import CheckoutProduct from "./CheckoutProduct/CheckoutProduct";
 import { useStateValue } from "../../StateProvider";
 
-
+                                                                                                                                                    
 
 const Checkout = () => {
   const [{ basket }, dispatch] = useStateValue();

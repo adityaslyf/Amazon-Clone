@@ -4,8 +4,28 @@ import Header from "./Components/Header/Header";
 import Home from "./Components/Home/Home";
 import Checkout from "./Components/Checkout/Checkout";
 import Login from "./Components/Login/Login";
+import { useEffect } from "react";
+import { auth } from "./FirebaseConfig";
+import { useStateValue } from "./StateProvider";
 
 function App() {
+  const [{}, dispatch] = useStateValue();
+  useEffect(() => {
+    auth.onAuthStateChanged((authUser) => {
+      console.log("This User is", authUser);
+      if (authUser) {
+        dispatch({
+          type: "SET_USER",
+          user: authUser,
+        });
+      } else {
+        dispatch({
+          type: "SET_USER",
+          user: null,
+        });
+      }
+    });
+  }, []);
   return (
     <Router>
       <>
@@ -43,7 +63,6 @@ function CombinedComponent2() {
 function CombinedComponentLogin() {
   return (
     <>
-    
       <Login />
     </>
   );

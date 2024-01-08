@@ -11,7 +11,7 @@ console.log("current basket: ", basket);
 dispatch({
   type:'REMOVE_FROM_BASKET',
   id: id,
-})
+})                                                                                                                                                                                                                                                                                                                  
   }
   
   return (
