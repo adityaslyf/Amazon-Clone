@@ -18,7 +18,7 @@ dispatch({
     <div>
       <img src={image} alt=""  className=" w-44"/>
       <p className=" w-66">{title}</p>
-      <p>
+      <p >
         <small>$</small>
         <strong>{price}</strong>
       </p>
