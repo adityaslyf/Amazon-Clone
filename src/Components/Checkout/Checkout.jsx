@@ -2,17 +2,16 @@ import Subtotal from "./Subtotal/Subtotal";
 import "./checkout.css";
 import CheckoutProduct from "./CheckoutProduct/CheckoutProduct";
 import { useStateValue } from "../../StateProvider";
-
                                                                                                                                                     
-
 const Checkout = () => {
-  const [{ basket }, dispatch] = useStateValue();
+  const [{ basket,user }, dispatch] = useStateValue();
 
   return (
     <div className="checkout">
       <div className="checkout__left">
         <img src="" alt="" />
         <div>
+          <h3> Hey,{user?.email}</h3>
           <h2 className="checkout__title">Your Shopping Basket</h2>
           {basket.map((item, index) => (
             <CheckoutProduct
