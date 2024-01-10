@@ -2,7 +2,9 @@ import "./Subtotal.css";
 import {IntlProvider,  FormattedNumber} from 'react-intl'
 import { useStateValue } from "../../../StateProvider"
 import {getBasketTotal} from '../../../reducer'
+import { useNavigate } from "react-router-dom";
 const Subtotal = () => {
+  const navigate = useNavigate();
   const [{ basket }, dispatch] = useStateValue();
   const messages = {
     myMessage: "Aujourd'hui, nous sommes le {ts, date, ::yyyyMMdd}",
@@ -35,9 +37,9 @@ const Subtotal = () => {
         currencyDisplay="symbol"
         decimalScale={2}
       />
-      <button>Proceed to Checkout</button>
+      <button onClick={e=> navigate("/payment")}>Proceed to Checkout</button>
     </div>
     </IntlProvider> 
-  );
+  ); 
 };
 export default Subtotal;

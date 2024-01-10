@@ -7,6 +7,7 @@ import Login from "./Components/Login/Login";
 import { useEffect } from "react";
 import { auth } from "./FirebaseConfig";
 import { useStateValue } from "./StateProvider";
+import Payment from "./Components/Payment/Payment";
 
 function App() {
   const [{}, dispatch] = useStateValue();
@@ -32,6 +33,7 @@ function App() {
         <div>
           <Routes>
             <Route path="/login" element={<CombinedComponentLogin />} />
+            <Route path="/payment" element={<CombinedComponentPayment />} />
 
             <Route path="/" element={<CombinedComponent />} />
             <Route path="/checkout" element={<CombinedComponent2 />} />
@@ -64,6 +66,16 @@ function CombinedComponentLogin() {
   return (
     <>
       <Login />
+    </>
+  );
+}
+
+function CombinedComponentPayment() {
+  return (
+    <>
+      <Header />
+      <Payment />
+     
     </>
   );
 }
