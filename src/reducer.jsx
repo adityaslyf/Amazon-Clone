@@ -8,10 +8,10 @@ export const getBasketTotal = (basket) =>
   basket?.reduce((amount, item) => item.price + amount, 0);
 
 const reducer = (state, action) => {
-  console.log(action);
+  // console.log(action);
   switch (action.type) {
     case "ADD_TO_BASKET":
-      console.log("Adding product to basket: ", action.item);
+      // console.log("Adding product to basket: ", action.item);
       return {
         ...state,
         basket: [...state.basket, action.item],
@@ -36,7 +36,7 @@ const reducer = (state, action) => {
           `product (id: ${action.id}) can not be removed as it is not present`
         );
       }
-      console.log("Basket after removing product: ", newBasket);
+      // console.log("Basket after removing product: ", newBasket);
       return {
         ...state,
         basket: newBasket,

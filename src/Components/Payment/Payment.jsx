@@ -3,6 +3,7 @@ import {useStateValue} from '../../StateProvider'
 import Checkout from "../Checkout/Checkout";
 import CheckoutProduct from "../Checkout/CheckoutProduct/CheckoutProduct";
 import { Link } from "react-router-dom";
+import { CardElement } from "@stripe/react-stripe-js";
 const Payment = () => {
   const [{basket,user} , dispatch] = useStateValue()
   return (
@@ -52,6 +53,9 @@ const Payment = () => {
           </div>
           <div className="payment__method">
             {/*strip*/}
+            <form>
+            <CardElement />
+            </form>
 
           </div>
         </div>

@@ -1,4 +1,3 @@
-import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Header from "./Components/Header/Header";
 import Home from "./Components/Home/Home";
@@ -8,12 +7,15 @@ import { useEffect } from "react";
 import { auth } from "./FirebaseConfig";
 import { useStateValue } from "./StateProvider";
 import Payment from "./Components/Payment/Payment";
+import {Elements} from '@stripe/react-stripe-js';
+import {loadStripe} from '@stripe/stripe-js';
+
+const stripePromise = loadStripe('pk_test_51OX5EUSGr2KSRtwFeyY6KU9cn27SQ8F3pdd3oVCRVwI19vP43ooB7nZ6Fo7c5WyqhY19llLZxTZtUtyrYDRtXxss00Pd7S318v');
 
 function App() {
   const [{}, dispatch] = useStateValue();
   useEffect(() => {
     auth.onAuthStateChanged((authUser) => {
-      console.log("This User is", authUser);
       if (authUser) {
         dispatch({
           type: "SET_USER",
@@ -27,56 +29,19 @@ function App() {
       }
     });
   }, []);
+
   return (
     <Router>
-      <>
-        <div>
-          <Routes>
-            <Route path="/login" element={<CombinedComponentLogin />} />
-            <Route path="/payment" element={<CombinedComponentPayment />} />
-
-            <Route path="/" element={<CombinedComponent />} />
-            <Route path="/checkout" element={<CombinedComponent2 />} />
-          </Routes>
-        </div>
-      </>
+      <div>
+        <Header />
+        <Routes>
+          <Route path="/login" element={<Login />} />
+          <Route path="/payment" element={<Elements stripe={stripePromise}><Payment /></Elements>} />
+          <Route path="/" element={<Home />} />
+          <Route path="/checkout" element={<Checkout />} />
+        </Routes>
+      </div>
     </Router>
-  );
-}
-
-function CombinedComponent() {
-  return (
-    <>
-      <Header />
-      <Home />
-    </>
-  );
-}
-
-function CombinedComponent2() {
-  return (
-    <>
-      <Header />
-      <Checkout />
-    </>
-  );
-}
-
-function CombinedComponentLogin() {
-  return (
-    <>
-      <Login />
-    </>
-  );
-}
-
-function CombinedComponentPayment() {
-  return (
-    <>
-      <Header />
-      <Payment />
-     
-    </>
   );
 }
 
