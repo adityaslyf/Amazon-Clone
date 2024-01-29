@@ -1,19 +1,21 @@
 import "./Payment.css";
-import {useStateValue} from '../../StateProvider'
+import { useStateValue } from "../../StateProvider";
 import Checkout from "../Checkout/Checkout";
 import CheckoutProduct from "../Checkout/CheckoutProduct/CheckoutProduct";
 import { Link } from "react-router-dom";
-import { CardElement } from "@stripe/react-stripe-js";
+import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
+
 const Payment = () => {
-  const [{basket,user} , dispatch] = useStateValue()
+  const stripe = useStripe();
+  const elements = useElements();
+
+  const [{ basket, user }, dispatch] = useStateValue();
   return (
     <div className="payment">
       <div className="payment__container">
         <h1>
           Checkout(
-            <Link to="/checkout">{basket.length} items
-            </Link>
-          )
+          <Link to="/checkout">{basket.length} items</Link>)
         </h1>
         {/*payment section  - delivery address*/}
 
@@ -22,7 +24,6 @@ const Payment = () => {
             <h3>Delivery Address</h3>
           </div>
           <div className="payment__address">
-          
             <p>{user?.email}</p>
             <p>Shaket puri</p>
             <p>New Delhi</p>
@@ -34,15 +35,15 @@ const Payment = () => {
             <h3>Review Items</h3>
           </div>
           <div className="payment__items">
-          {basket.map((item, index) => (
-            <CheckoutProduct
-              key={item.id + index} //here we add index to the item.id to make it unique id as i am facing the issue of not able to remove items with similar id in the checkout section
-              id={item.id}
-              title={item.title}
-              image={item.image}
-              price={item.price}
-              rating={item.rating}
-            />
+            {basket.map((item, index) => (
+              <CheckoutProduct
+                key={item.id + index} //here we add index to the item.id to make it unique id as i am facing the issue of not able to remove items with similar id in the checkout section
+                id={item.id}
+                title={item.title}
+                image={item.image}
+                price={item.price}
+                rating={item.rating}
+              />
             ))}
           </div>
         </div>
@@ -51,12 +52,20 @@ const Payment = () => {
           <div className="payment__title">
             <h3>Payment Method</h3>
           </div>
-          <div className="payment__method">
+          <div className="payment__method bg-zinc-900">
             {/*strip*/}
+            <div className="payment__details"></div>
             <form>
-            <CardElement />
-            </form>
+             
+            <CardElement
+              id='card-element'
+              
+             
+            />
 
+ 
+          
+            </form> 
           </div>
         </div>
       </div>
