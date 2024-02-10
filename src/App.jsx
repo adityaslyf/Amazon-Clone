@@ -11,8 +11,12 @@ import { useStateValue } from "./StateProvider";
  import {loadStripe} from '@stripe/stripe-js';
  import '@stripe/stripe-js';
 
-const stripePromise = await loadStripe('pk_test_51OX5EUSGr2KSRtwFeyY6KU9cn27SQ8F3pdd3oVCRVwI19vP43ooB7nZ6Fo7c5WyqhY19llLZxTZtUtyrYDRtXxss00Pd7S318v');
 
+ let stripePromise;
+const loadStripeKey = async () => {
+  stripePromise = await loadStripe('pk_test_51OX5EUSGr2KSRtwFeyY6KU9cn27SQ8F3pdd3oVCRVwI19vP43ooB7nZ6Fo7c5WyqhY19llLZxTZtUtyrYDRtXxss00Pd7S318v');
+};
+loadStripeKey();
 function App() {
                                                                                                           
   const [{}, dispatch] = useStateValue();
@@ -38,7 +42,7 @@ function App() {
         <Header />
         <Routes>
           <Route path="/login" element={<Login />} />
-           <Route path="/payment" element={<Elements stripe={stripePromise}><Payment /></Elements>} /> 
+          <Route path="/payment" element={<Elements stripe={stripePromise}><Payment /></Elements>} />
           <Route path="/" element={<Home />} />
           <Route path="/checkout" element={<Checkout />} />
         </Routes>

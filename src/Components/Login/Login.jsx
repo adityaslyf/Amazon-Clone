@@ -27,7 +27,7 @@ const Login = () => {
   const register = async (e) => {
     e.preventDefault();
     try {
-      const userCredential = await createUserWithEmailAndPassword(
+      const userCredential =  createUserWithEmailAndPassword(
         auth,
         email,
         password
